@@ -1,0 +1,53 @@
+﻿<ui:UiPage
+    x:Class="UiDesktopApp2.Views.Pages.DataPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:contexto="clr-namespace:UiDesktopApp2.ViewModels"
+    xmlns:converter="clr-namespace:UiDesktopApp2.Helpers"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="DataPage"
+     
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <contexto:DataViewModel></contexto:DataViewModel>
+    </Page.DataContext>
+    <Page.Resources>
+        <converter:ConvertBoolToVisibility x:Key="converttovisibility"></converter:ConvertBoolToVisibility>
+    </Page.Resources>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ScrollViewer x:Name="scroll" Grid.Row="1" ScrollChanged="scroll_ScrollChanged" >
+            <ItemsControl x:Name="lista" ItemsSource="{Binding Colors, Mode=OneWay}" VirtualizingPanel.VirtualizationMode="Recycling" VirtualizingPanel.IsVirtualizing="True">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Margin="0,0,0,80"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                   
+                    <DataTemplate>
+                        <ui:Card Width="80" Height="80" Margin="2" VerticalAlignment="Stretch" Background="{Binding SolidColorBrush}">
+                            <ui:SymbolIcon Symbol="{Binding Icon}" FontSize="18"/>
+                        </ui:Card>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <DockPanel>
+            <ProgressBar DockPanel.Dock="Bottom" Height="4" Visibility="{Binding Move, Converter={StaticResource converttovisibility}, Mode=OneWay}" IsIndeterminate="{Binding Move}" OverridesDefaultStyle="False"></ProgressBar>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Total: " VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}"></Label>
+                <Label Content="{Binding Items.Count,ElementName=lista}" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}"></Label>
+                <ui:Button Content="Mas" Command="{Binding MasCommand}" VerticalAlignment="Center"></ui:Button>
+            </StackPanel>
+        </DockPanel>
+        
+    </Grid>
+</ui:UiPage>

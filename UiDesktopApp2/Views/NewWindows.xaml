@@ -1,0 +1,22 @@
+﻿<ui:UiWindow x:Class="UiDesktopApp2.Views.NewWindows"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:contexto="clr-namespace:UiDesktopApp2.ViewModels"
+        mc:Ignorable="d"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+       ExtendsContentIntoTitleBar="True"
+       WindowBackdropType="Mica"
+             
+        Title="NewWindows" Height="450" Width="800" Background="{x:Null}">
+    <Window.DataContext>
+        <contexto:NewwindowViewModel></contexto:NewwindowViewModel>
+    </Window.DataContext>
+    <Grid>
+        <Button Content="{Binding ApplicationTitle}" Command="{Binding SaludarCommand}" Height="273" Width="240" HorizontalAlignment="Center"></Button>
+        <ui:TitleBar UseSnapLayout="True" Icon="/Assets/applicationIcon-256.png" Title="new window">
+          
+        </ui:TitleBar>
+    </Grid>
+</ui:UiWindow>
