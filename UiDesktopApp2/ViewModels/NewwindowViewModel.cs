@@ -1,5 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,7 +28,7 @@ namespace UiDesktopApp2.ViewModels
         [ObservableProperty]
         private string _applicationTitle = String.Empty;
 
-        [ICommand]
+        [RelayCommand]
         public void Saludar() => ApplicationTitle = _serviceprueba!.Num();
 
         private void InitializeViewModel()

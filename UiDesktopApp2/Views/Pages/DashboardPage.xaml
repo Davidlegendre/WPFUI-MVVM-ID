@@ -14,12 +14,15 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <StackPanel VerticalAlignment="Top">
-
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <ui:Button
             Grid.Column="0"
-            Command="{Binding ViewModel.OnCounterIncrementCommand, Mode=OneWay}"
+            Command="{Binding ViewModel.CounterIncrementCommand, Mode=OneWay}"
             Content="Click me!"
             Icon="Fluent24" />
             <TextBlock
@@ -28,11 +31,6 @@
             VerticalAlignment="Center"
             Text="{Binding ViewModel.Counter, Mode=OneWay}" />
         </StackPanel>
-        <ui:Card Margin="5">
-            <Button>hola</Button>
-        </ui:Card>
-        <ProgressBar Height="4" IsTabStop="False" IsIndeterminate="True"/>
 
-
-    </StackPanel>
+    </Grid>
 </ui:UiPage>

@@ -1,5 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -50,7 +50,7 @@ namespace UiDesktopApp2.ViewModels
             
         }
 
-        [ICommand]
+        [RelayCommand]
         private void Mas()
         {
             // Colors = new ObservableCollection<DataColor>(_colorsList!.Skip(100).Take(Colors!.Count + 100));

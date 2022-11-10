@@ -1,5 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -52,8 +52,8 @@ namespace UiDesktopApp2.ViewModels
             return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? String.Empty;
         }
 
-        [ICommand]
-        private void OnChangeTheme(string parameter)
+        [RelayCommand]
+        private void ChangeTheme(string parameter)
         {
             switch (parameter)
             {
