@@ -35,19 +35,19 @@
                 Margin="0,0,0,0"
                 Background="{Binding Background,ElementName=grid, Converter={StaticResource converTthemecolor}}"
                 CornerRadius="8,0,0,0" BorderThickness="1,1,1,1" BorderBrush="#66949494">
-                <Grid Margin="0,48,0,0">
+                <Grid Margin="0,38,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Frame x:Name="RootFrame" Padding="10" Grid.Row="1" />
-                    <ui:Breadcrumb
+                    <Frame x:Name="RootFrame" Padding="5" Grid.Row="1" />
+                    <!--ui:Breadcrumb
                         Grid.Row="0"
                         Margin="10"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
                         FontSize="28"
-                        Navigation="{Binding ElementName=RootNavigation, Mode=OneWay}" />
+                        Navigation="{Binding ElementName=RootNavigation, Mode=OneWay}" /-->
 
 
 
@@ -57,7 +57,7 @@
 
         </Grid>
 
-        <ui:TitleBar Grid.Column="1" WindowChrome.IsHitTestVisibleInChrome="True" Title="{Binding ApplicationTitle}" VerticalAlignment="Top" UseLayoutRounding="True" Icon="/Assets/applicationIcon-1024.png" Padding="13,13,13,13" Theme="Dark" OverridesDefaultStyle="True" UseSnapLayout="True"/>
+        <ui:TitleBar Name="titlebar" Grid.Column="1" WindowChrome.IsHitTestVisibleInChrome="True" Title="{Binding ApplicationTitle}" VerticalAlignment="Top" UseLayoutRounding="True" Icon="/Assets/applicationIcon-1024.png" Padding="13,13,13,13" Theme="Dark" OverridesDefaultStyle="True" UseSnapLayout="True"/>
 
         <ui:NavigationCompact WindowChrome.IsHitTestVisibleInChrome="True"
             x:Name="RootNavigation"
