@@ -14,11 +14,11 @@
     d:DesignHeight="450"
     d:DesignWidth="800"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    mc:Ignorable="d">
+    mc:Ignorable="d" >
     <Page.Resources>
         <converters:ConvertBoolToVisibility x:Key="converttovisibility"></converters:ConvertBoolToVisibility>
     </Page.Resources>
-    <Grid >
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"/>
@@ -46,7 +46,7 @@
                                Text="{Binding Source,ElementName=browser}" Icon="Search32" Margin="5"></ui:AutoSuggestBox>
             
         </Grid>
-        <wv2:WebView2 Grid.Row="1" Name="browser" Source="{Binding ViewModel.SourceFind}"></wv2:WebView2>
+        <wv2:WebView2  Grid.Row="1" Name="browser" Source="{Binding ViewModel.SourceFind}"></wv2:WebView2>
         
     </Grid>
 </ui:UiPage>
