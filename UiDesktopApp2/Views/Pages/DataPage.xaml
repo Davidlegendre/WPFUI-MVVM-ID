@@ -45,7 +45,10 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="Total: " VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}"></Label>
                 <Label Content="{Binding Items.Count,ElementName=lista}" VerticalAlignment="Center" Foreground="{DynamicResource TextFillColorPrimaryBrush}"></Label>
-                <ui:Button Content="Mas" Command="{Binding MasCommand}" VerticalAlignment="Center"></ui:Button>
+                <ui:Button Content="Mas" Command="{Binding MasCommand}" VerticalAlignment="Center">
+                   
+                    
+                </ui:Button>
             </StackPanel>
         </DockPanel>
         
