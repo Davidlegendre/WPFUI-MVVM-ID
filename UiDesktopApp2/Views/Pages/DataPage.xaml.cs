@@ -21,7 +21,10 @@ namespace UiDesktopApp2.Views.Pages
         {
             
             InitializeComponent();
-            ViewModel = this.DataContext as DataViewModel;
+            if (ViewModel != null)
+            {
+                ViewModel = this.DataContext as DataViewModel;
+            }
         }
 
         private void scroll_ScrollChanged(object sender, System.Windows.Controls.ScrollChangedEventArgs e)

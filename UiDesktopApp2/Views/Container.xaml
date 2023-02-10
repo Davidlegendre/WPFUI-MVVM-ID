@@ -29,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid x:Name="grid" Background="{ui:ThemeResource}" Visibility="Collapsed"></Grid>
-        <Grid Grid.Column="1" >
+        <Grid Grid.Column="1" Margin="0,0,0,0">
             <Border
                 
                 Margin="0,0,0,0"
@@ -57,7 +57,7 @@
 
         </Grid>
 
-        <ui:TitleBar Name="titlebar" Grid.Column="1" WindowChrome.IsHitTestVisibleInChrome="True" Title="{Binding ApplicationTitle}" VerticalAlignment="Top" UseLayoutRounding="True" Icon="/Assets/applicationIcon-1024.png" Padding="13,13,13,13" Theme="Dark" OverridesDefaultStyle="True" UseSnapLayout="True"/>
+        <ui:TitleBar Name="titlebar" Grid.Column="1" Margin="0,10,0,0" WindowChrome.IsHitTestVisibleInChrome="True" Title="{Binding ApplicationTitle}" VerticalAlignment="Top" UseLayoutRounding="True" Icon="/Assets/applicationIcon-1024.png" Padding="13,13,13,13" Theme="Dark" OverridesDefaultStyle="True" UseSnapLayout="True"/>
 
         <ui:NavigationCompact WindowChrome.IsHitTestVisibleInChrome="True"
             x:Name="RootNavigation"

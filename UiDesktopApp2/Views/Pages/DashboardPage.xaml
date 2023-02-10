@@ -8,11 +8,11 @@
     xmlns:converters="clr-namespace:UiDesktopApp2.Helpers"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
-    Title="DashboardPage"
-    d:DataContext="{d:DesignInstance local:DashboardPage,
-                                     IsDesignTimeCreatable=False}"
+    Title="DashboardPage"   
     d:DesignHeight="450"
     d:DesignWidth="800"
+     d:DataContext="{d:DesignInstance local:DashboardPage,
+                                     IsDesignTimeCreatable=False}"
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d" >
     <Page.Resources>
@@ -21,32 +21,37 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid>
+        <Grid ClipToBounds="True">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal">
-                <ui:Button Appearance="Primary" CommandParameter="{Binding ElementName=browser}" Command="{Binding ViewModel.BackCommand}" 
+                <ui:Button Name="btnleft" Appearance="Primary" CommandParameter="{Binding ElementName=browser}" Command="{Binding ViewModel.BackCommand}" 
                            Visibility="{Binding CanGoBack,ElementName=browser, Converter={StaticResource converttovisibility}}">
                     <ui:SymbolIcon Symbol="ArrowLeft32"></ui:SymbolIcon>
                 </ui:Button>
-                <ui:Button Appearance="Transparent" CommandParameter="{Binding ElementName=browser}" Command="{Binding ViewModel.RefreshCommand}" >
+                <ui:Button Appearance="Transparent"  Margin="4,0,4,0" CommandParameter="{Binding ElementName=browser}" Command="{Binding ViewModel.RefreshCommand}" >
                     <ui:SymbolIcon Symbol="ArrowReset32"></ui:SymbolIcon>
                 </ui:Button>
                 <ui:Button Appearance="Transparent" CommandParameter="{Binding ElementName=browser}" Command="{Binding ViewModel.ForwardCommand}"  
                            Visibility="{Binding CanGoForward,ElementName=browser, Converter={StaticResource converttovisibility}}">
                     <ui:SymbolIcon Symbol="ArrowRight32"></ui:SymbolIcon>
                 </ui:Button>
+                <Image Width="16" Height="16" Source="{Binding ViewModel.UrlImage2}" Stretch="Uniform"></Image>
             </StackPanel>
-            <ui:AutoSuggestBox Grid.Column="1" ClearButtonEnabled="False" KeyDown="TextBox_KeyDown" PlaceholderText="URL" 
-                               Text="{Binding Source,ElementName=browser}" Icon="Search32" Margin="5"></ui:AutoSuggestBox>
+            <ui:AutoSuggestBox MouseDoubleClick="AutoSuggestBox_MouseDoubleClick" BorderThickness="2" IsEnabled="{Binding ViewModel.IsEnableSearchTXT}" Grid.Column="1" ClearButtonEnabled="False" KeyDown="TextBox_KeyDown" PlaceholderText="URL or any search" 
+                               Text="{Binding Source,ElementName=browser, Mode=OneWay}" Icon="Search32" Margin="5"></ui:AutoSuggestBox>
+            <ui:ProgressRing Visibility="{Binding ViewModel.LoaddingVisible}" Margin="5"  Grid.Column="2" Width="18" Height="18" IsIndeterminate="True" Progress="30"/>
             
         </Grid>
-        <wv2:WebView2  Grid.Row="1" Name="browser" Source="{Binding ViewModel.SourceFind}"></wv2:WebView2>
+        <Label Content="{Binding ViewModel.Title, Mode=OneWay}" Grid.Row="1"></Label>
+        <wv2:WebView2 Visibility="Visible" Grid.Row="2" Margin="2" Name="browser" Source="{Binding ViewModel.SourceFind, Mode=OneWay}" NavigationStarting="Browser_NavigationStarting" NavigationCompleted="Browser_NavigationCompleted"></wv2:WebView2>
         
     </Grid>
 </ui:UiPage>
